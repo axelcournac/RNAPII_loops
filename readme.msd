@@ -1,4 +1,4 @@
-#  µproject
+#  Pol2 project
 
 Codes and scripts to reproduce the analyses and plots. 
 
@@ -8,7 +8,7 @@ Codes and scripts to reproduce the analyses and plots.
 Scripts and codes can be run on OS X and other Unix-based systems. It basically requires to have Python installed on your machine which is commonly installed on Unix-based systems. 
 For windows, you can have a look to https://www.python.org/downloads/windows/. Then, a few python modules are necessary for diverses operations on arrays and vizualisation. 
 
-#### Python (>=3.4)
+#### Python (>=3.6)
 * Numpy
 * Matplotlib (>=1.0)
 * Scipy
@@ -55,3 +55,7 @@ We used tinyMapper:
 
 ./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
 ```
+
+
+
+
