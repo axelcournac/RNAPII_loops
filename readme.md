@@ -1,4 +1,4 @@
-#  µproject
+#  Pol 2 activity  
 
 Codes and scripts to reproduce the analyses and plots. 
 
@@ -8,7 +8,7 @@ Codes and scripts to reproduce the analyses and plots.
 Scripts and codes can be run on OS X and other Unix-based systems. It basically requires to have Python installed on your machine which is commonly installed on Unix-based systems. 
 For windows, you can have a look to https://www.python.org/downloads/windows/. Then, a few python modules are necessary for diverses operations on arrays and vizualisation. 
 
-#### Python (>=2.7)
+#### Python (>=3.6)
 * Numpy
 * Matplotlib (>=1.0)
 * Scipy
@@ -66,67 +66,4 @@ hicstuff pipeline -t 18 --read-len=50  -D -a bowtie2 -e DpnII,HinfI --matfmt bg2
 #### Convertion into cool file:
 ```bash
 cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /sacCer3.chr_sizes.txt:2000  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool 
-```
-
-#### Visualisation of contact maps
-```bash
-python3 plasmid_micron2_hot_spots_ARG1.py out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool     pKan-STB-P     pKan-STB-P
-```
-To have the 1D enrichment plot for contact signal of the plasmid:
-
-```bash
- python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool plasmid_p2-micron topo2 HSC_plasmids_in_Micro-C_WT_log_SC288_genome.txt.sort.formated
- ```
- 
-To automatically detect the peaks of contact between plasmid and yeast chromosomes, we use plasmid_micron2_hot_spots_ARG1_fig_sup1_norm3.py 
-
-#### Plot of genomic signals agglomerated around hot spots of contact: 
-
-```bash
-python /home/axel/Bureau/z_python_scripts_copy/plasmid_micron2_Chip-seq_ARG5.py SRR13736589.bis.fastq.sam.MQ0 SRR13736587.bis.fastq.sam.MQ0 H3_log H3_log
-```
-
-#### Computation of pileup plot according the gene structure: 
-creation of bw file with the python code create_big_wig.py then
-
-```bash
-
-computeMatrix scale-regions -S Micro-C_WT_log_redone_plasmid_contact_signal.bw   -R long_genes_only_host_chrm.txt2  --beforeRegionStartLength 7000 --regionBodyLength 7000 --afterRegionStartLength  7000 --outFileName signal_2u_genes.gz 
-
-plotProfile -m signal_2u_genes.gz -out Profile_contact_long_genes.pdf --numPlotsPerRow 2  --plotTitle "Contact signal at long gene (size>7b)"
-```
-
-#### 
-To plot the agglomerated plots of contact signal around centromeres: 
-```bash
-python3 plasmid_HSC_1D_agglo_norm2.py  valid_idx_pcrfree.pairs.cool  plasmid_p2-micron log_centros centro1.dat55
-```
-
-### Generation and visualisation of scatter plot for the ChIP-exo libraries
-
-After alignment with bowtie2 of the 1251 libraries, we filterd the reads with MQ>0 and then process all the files: 
-
-```bash
-#!/bin/bash
-
-for i in *.fastq.sam.MQ0 ; 
-do j=$(echo $i | grep -E -o  SRR[0-9]+) ; 
-if [ ! -f "1D_ENRICHMENT_HSC_"$j"_73Hot_spots_plasmid.pdf" ];
-then 
-echo $j;
-python3 plasmid_micron2_Chip-seq_ARG3.py $i $i; 
-fi; done
-```
-
-repo: /media/axel/RSG4/diverse_yeast_data/CHip_seq_2018
-
-We use the code density_scatter_plot5.py to generate the plot. 
-
-#### Computation of GC content for regions contacted by the plasmid and the whole genome
-
-```bash
-seqkit fx2tab sequences_73HSC.txt -n --length --gc --gc-skew --header-line > gc_content_73HSC.txt
-
-dnaglider-linux -window 10000 -threads 8 -fields "GC,GCSKEW" -fasta SC288_with_micron.fa  -out gc_stats.tsv
-
 ```
