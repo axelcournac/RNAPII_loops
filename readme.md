@@ -1,4 +1,4 @@
-#  Pol 2 activity  
+#  Pol 2 loops 
 
 Codes and scripts to reproduce the analyses and plots. 
 
