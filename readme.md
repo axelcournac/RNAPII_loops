@@ -21,7 +21,7 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 * `cooler` / [cooler](https://github.com/open2c/cooler)
 * `tinyMapper` / [tinyMapper](https://github.com/js2264/tinyMapper)
 * `deepTools` / [deepTools](https://deeptools.readthedocs.io/en/develop/)
-
+* `chromosight` / [chromosight](https://github.com/koszullab/chromosight)
 
 ### Raw data extraction and alignment
 #### Data extraction
@@ -53,7 +53,7 @@ We used tinyMapper:
 ./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
 ```
 
-### Visualisation of agglometated pileups and quantification 
+### Visualisation of pileups and quantification 
 
 ####  Plot of the agglomerated plot with home made code
 python3 agglomerated_pileup.py $contact_data $name_exp $pair_file $name_pair
