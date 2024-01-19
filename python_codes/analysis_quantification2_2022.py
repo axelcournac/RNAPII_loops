@@ -3,7 +3,7 @@
 """
 Created on Thu Dec 12 13:24:15 2019
 @author: axel KournaK
-Spectral lots after quantifications with ChromoSight
+Spectral plots after quantifications with ChromoSight
 """
 import numpy as np
 import scipy
