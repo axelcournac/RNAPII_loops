@@ -1,2 +1,2 @@
-This repository contains all codes developped for the visualisation, analyses etc. 
+This repository contains codes developped for the visualisation, analyses etc. 
 
