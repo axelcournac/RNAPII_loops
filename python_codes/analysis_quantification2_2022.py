@@ -3,8 +3,7 @@
 """
 Created on Thu Dec 12 13:24:15 2019
 @author: axel KournaK
-To have some plots after quantifications with ChromoSight
-je reprends cette analyse en 2022 pour la répliquer avec Pol II
+Spectral lots after quantifications with ChromoSight
 """
 import numpy as np
 import scipy
@@ -23,15 +22,9 @@ lowess = sm.nonparametric.lowess
 from skmisc.loess import loess
 
 # before: 
-#chromosight quantify --pattern=loops_small /home/axel/Bureau/YEAST/pairs_peaks_condensins3.txt.bg2.all_sizes.2 /home/axel/Bureau/loops_quantification_2022/cool_files/SRR7706227_SRR7706226_hic_scer_mitotic_2kb.cool SRR7706227_SRR7706226_hic_scer_mitotic_2kb
-#chromosight quantify --pattern=loops /home/axel/Bureau/YEAST/pairs_peaks_1.5_PolII_Log_1.5.txt.bg2 /media/axel/RSG4/diverse_yeast_data/quiescence_2019/fastq/out_Micro-C_WT_log_redone/tmp/valid_idx_pcrfree.pairs.cool quiescence_paper_log_2
+# chromosight quantify --perc-undetected=100  --perc-zero=100  /home/axel/Bureau/YEAST/pairs_peaks_1.5_PolII_Log_1.5.txt.bg2 /media/axel/RSG51/diverse_yeast_data_copy/copy_cool_files_diverse_yeast_data/tsuki2_paper_out_repos_out_SRR13736654_55_tmp_valid_idx_pcrfree.pairs.2000.cool SRR13736654_55
 
-# input contact data: 
-df=pd.read_table('/home/axel/Bureau/loops_quantification_2022/SRR7706227_SRR7706226_hic_scer_mitotic_2kb.tsv',header=0, delimiter="\t") 
-df=pd.read_table('/home/axel/Bureau/loops_quantification_2022/SRR7706227_SRR7706226_hic_scer_mitotic_2kb_polII_2.tsv',header=0, delimiter="\t") 
-df=pd.read_table('/home/axel/Bureau/loops_quantification_2022/quiescence_paper_log_2.tsv',header=0, delimiter="\t") 
-df=pd.read_table('/home/axel/Bureau/loops_quantification_2022/SRR8718853_Hi-C_Wildtype_small.tsv',header=0, delimiter="\t")
-df=pd.read_table('/home/axel/Bureau/loops_quantification_2022_spectre/all_centro_paper.tsv',header=0, delimiter="\t")
+df=pd.read_table('/home/axel/Bureau/Pol2_Project/loops_quantification_2022_spectre/SRR13736654_55.tsv',header=0, delimiter="\t")
 
 dist = df["start2"] - df["start1"]
 print( min(dist) )
@@ -46,14 +39,22 @@ std_tab = np.zeros(N)
 size_tab = np.zeros(N)
 no_tab = np.zeros(N)
 
+min_number=15 # minimal number of events to do the average or median 
+
 for i in range(N) :
     kb = df.loc[ ( (df['chrom1'] == df['chrom2']) & 
                   ((df["start2"] - df["start1"] >= i*bin_matrice ) & (df["start2"] - df["start1"] < (i+1)*bin_matrice ) )) ]
-    print(i, len(kb) )
-    size_tab[i] = i*bin_matrice
-    mean_tab[i] = np.nanmedian( kb['score'] )
-    std_tab[i] = np.std( kb['score'] )
-    no_tab[i] = len( kb['score'] )
+#    print(i, len(kb) )
+    if len(kb) > min_number:
+        size_tab[i] = i*bin_matrice
+        mean_tab[i] = np.nanmean( kb['score'] )
+        std_tab[i] = np.std( kb['score'] )
+        no_tab[i] = len( kb['score'] )
+    else:
+        size_tab[i] = i*bin_matrice
+        mean_tab[i] = np.nan
+        std_tab[i] = np.nan
+        no_tab[i] = len( kb['score'] ) 
 
 mean_tab[np.isnan(mean_tab)] = 0
     
