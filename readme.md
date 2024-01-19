@@ -54,14 +54,15 @@ We used tinyMapper:
 ./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
 ```
 
-### Visualisation of contact maps with plasmid signal
+### Visualisation of agglometated pileups and quantification 
 
-#### Alignment 
+####  Plot of the agglomerated plot with home made code
+python3 agglomerated_pileup.py $contact_data $name_exp $pair_file $name_pair
 
-```bash
-hicstuff pipeline -t 18 --read-len=50  -D -a bowtie2 -e DpnII,HinfI --matfmt bg2 --no-cleanup -F -p -o out2_pKan-STB-P -g SC288_with_pKan-STB-P     FG104_S2_R1_001.fastq.gz FG104_S2_R2_001.fastq.gz
-```
-#### Convertion into cool file:
-```bash
-cooler cload pairs --zero-based -c1 1 -p1 2 -c2 4 -p2 5 /sacCer3.chr_sizes.txt:2000  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs  out2_pKan-STB-P/tmp/valid_idx_pcrfree.pairs.cool 
-```
+####   Quantification with Chromosight 
+chromosight quantify --pattern=loops  --perc-undetected=100 --perc-zero=100   $pair_file $contact_data $name_exp"_"$name_pair
+
+####   Plot of the agglomerated plot from Chromosight (a little different from the home made plot) and plot of the distribution of pattern scores
+python3 agglo_distrib.py $name_exp"_"$name_pair.json $name_exp"_"$name_pair.tsv
+
+
