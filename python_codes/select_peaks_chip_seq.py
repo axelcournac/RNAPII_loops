@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 @author: Axel KournaK
-To study chip seq signals around borders manually identified
-To be coupled with borders_detection_mano
-both: to select peacks that have disappear in the 2d condition 
-3: for condensin peaks in Q to see if a range where they disappear in SMC OFF
+Select Chip-seq peaks to do after pileup plots with contact data like Hi-C or microC
 """
 import numpy as np
 import matplotlib
@@ -13,22 +10,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 import os
-#os.chdir('/media/axel/RSG53/python_codes_virus')
+
 os.chdir('/home/axel/Bureau/z_python_scripts_copy')
 import itertools
 import matplotlib.backends.backend_pdf
 
 # Various 1D analog signals from ChIP-seq or other already tried:
 # ---------------------------------------------------------------------------------------------------------------------- 
-df4=pd.read_table('/home/axel/Bureau/polII_peaks_2024/SRR7175393.fastq.sam.MQ30.Rpb3_in_Log_All_Replicates_Merged_IP',header=None, delimiter=" ")
-df8=pd.read_table('/home/axel/Bureau/polII_peaks_2024/SRR7175394.fastq.sam.MQ30.Rpb3_in_Log_All_Replicates_Merged_Input',header=None, delimiter=" ")
+df4=pd.read_table('/home/axel/Bureau/polII_peaks_2024/SRR2065097.fastq.sam.MQ30.FigS5_Scc1PK9_IP_G1_releasing_60min',header=None, delimiter=" ")
+df8=pd.read_table('/home/axel/Bureau/polII_peaks_2024/SRR2065092.fastq.sam.MQ30.FigS5_Scc1PK9_WCE_G1_releasing_60min',header=None, delimiter=" ")
+name_bank="cohesin_classic"
 
 df44=pd.read_table('/home/axel/Bureau/polII_peaks_2024/SRR7175393.fastq.sam.MQ30.Rpb3_in_Log_All_Replicates_Merged_IP',header=None, delimiter=" ")
 df88=pd.read_table('/home/axel/Bureau/polII_peaks_2024/SRR7175394.fastq.sam.MQ30.Rpb3_in_Log_All_Replicates_Merged_Input',header=None, delimiter=" ")
+name_bank="PolII_classic"
 
 #------------
 len(df4)
-list_all_chrms= ("chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10","chr11","chr12","chr13","chr14","chr15","chr16")
+list_all_chrms= ("chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9",
+                 "chr10","chr11","chr12","chr13","chr14","chr15","chr16")
 
 # we take the positions of the signal for each chromosome 
 ka={}
@@ -112,7 +112,7 @@ for chr in list_all_chrms:
     
     indices = np.where(bs2>=0)
     
-#    # removing of bins clothed to centro :
+#   removing of bins clothed to centro :
     indices = np.where( np.logical_or( (bs2 < (centro_binned -area)* BIN ), (bs2 > (centro_binned + area) *BIN ) ) ) 
     if centro ==12:
         rdna = 458991
@@ -131,7 +131,7 @@ for chr in list_all_chrms:
 #    plt.ylim(0,10)
     
     # Generation of pairs positions files:
-    distance_min1 = 20000    # minimal distance to consider for the pair
+    distance_min1 = 10000    # minimal distance to consider for the pair
     distance_max1 = 50000    # maximal distance to consider for the pair
 
     distance_min2 = 50000    # minimal distance to consider for the pair
@@ -162,4 +162,4 @@ plt.close('all')
 f_out.close() 
 f_out2.close()
 f_out3.close()   
-    
+
