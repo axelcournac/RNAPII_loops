@@ -19,3 +19,7 @@ Associated paper: Bin Hu, Naomi Petela, Alexander Kurze, Kok-Lung Chan, Christop
 Biological chromodynamics: a general method for measuring protein occupancy across the genome by calibrating ChIP-seq, 
 Nucleic Acids Research, Volume 43, Issue 20, 16 November 2015, Page e132, https://doi.org/10.1093/nar/gkv670
 id:  SRR2065092 
+
+
+- SRR13736654_55_tmp_valid_idx_pcrfree.pairs.2000.cool = cool file binned at 2 kb which is the merge of 2 microC libraries carried in log phase 
+id: SRR13736654 and SRR13736655
