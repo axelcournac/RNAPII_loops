@@ -51,11 +51,9 @@ and convert into cool file:
 cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 sacCer3.chr_sizes.txt:200 valid_idx_pcrfree.pairs valid_idx_pcrfree.pairs.cool
 ```
 
-### Processing of genomic data like Mnase-seq, ChIP-seq or RNA-seq
+### Processing of genomic data like ChIP-seq or RNA-seq
 We used tinyMapper: 
 ```bash
-./tinyMapper.sh -m MNase -s SRR6246290.1 -g SC288_with_micron_SC88 -o results_ATAC-seq
-
 ./tinyMapper.sh -m ChIP -s SRR7175393.1 -i SRR7175394.1 -g SC288_with_micron_SC88 -o results_CHIP
 
 ./tinyMapper.sh -m RNA -s SRR8503057.1 -g SC288_with_micron_SC88 -o results_RNAseq
