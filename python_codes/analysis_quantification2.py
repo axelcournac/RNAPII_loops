@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Dec 12 13:24:15 2019
-@author: axel KournaK
 Spectral plots after quantifications with ChromoSight
 """
 import numpy as np
@@ -22,7 +20,7 @@ lowess = sm.nonparametric.lowess
 from skmisc.loess import loess
 
 # before: 
-# chromosight quantify --perc-undetected=100  --perc-zero=100  /home/axel/Bureau/YEAST/pairs_peaks_1.5_PolII_Log_1.5.txt.bg2 /media/axel/RSG51/diverse_yeast_data_copy/copy_cool_files_diverse_yeast_data/tsuki2_paper_out_repos_out_SRR13736654_55_tmp_valid_idx_pcrfree.pairs.2000.cool SRR13736654_55
+# chromosight quantify --perc-undetected=100  --perc-zero=100  /home/axel/Bureau/YEAST/pairs_peaks_1.5_PolII_Log_1.5.txt.bg2   tsuki2_paper_out_repos_out_SRR13736654_55_tmp_valid_idx_pcrfree.pairs.2000.cool SRR13736654_55
 
 df=pd.read_table('/home/axel/Bureau/Pol2_Project/loops_quantification_2022_spectre/SRR13736654_55.tsv',header=0, delimiter="\t")
 
