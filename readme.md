@@ -12,6 +12,7 @@ For windows, you can have a look to https://www.python.org/downloads/windows/. T
 * Matplotlib (>=1.0)
 * Scipy
 * Pandas
+* scikit-misc 
 
 #### External programs
 
