@@ -1,7 +1,7 @@
 #  Cohesin and RNA Pol II loops 
 
 Codes and scripts to reproduce the analyses and plots from the article _RNA Pol II-based regulations of chromosome folding_ by
-Christophe Chapard, Nathalie Bastié, Axel Cournac1, Laura Chaptal, Henri Mboumba, Sophie Queille, Agnès Thierry, Olivier Gadal, Armelle Lengronne, Romain Koszul, Frédéric Beckouët. 
+Christophe Chapard, Nathalie Bastié, Axel Cournac, Laura Chaptal, Henri Mboumba, Sophie Queille, Agnès Thierry, Olivier Gadal, Armelle Lengronne, Romain Koszul, Frédéric Beckouët. 
 
 ### Dependencies
 
