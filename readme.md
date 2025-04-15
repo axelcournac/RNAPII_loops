@@ -1,4 +1,4 @@
-#  Pol II loops 
+#  Cohesin and RNA Pol II loops 
 
 Codes and scripts to reproduce the analyses and plots. 
 
