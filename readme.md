@@ -74,5 +74,12 @@ To compute the spectrum of cohesin loops at differents sizes, we use the python 
 chromosight quantify --pattern=loops_small --perc-zero=100 --perc-undetected=20  /home/axel/Bureau/YEAST/pairs_peaks_cohesins3.txt.bg2.all_sizes.2  /media/axel/RSG5/disk/copy_diverse_yeast/data_LChaptel/out_LCH10/tmp/valid_idx_pcrfree.pairs.2000.S288C.cool  LCH10
 ```
 
+### Generation and of 4C like plot 
+To generated 4C like plot at various genomic positions, we use the home made python code 4C_smoothed_pol2.py
+
+
+
+
+
 
 
