@@ -38,7 +38,13 @@ A SRA executable called fastq-dump from SRA can be used to extract and split bot
 #### Alignment of the Hi-C libraries
 To align the reads and generate the contact files in cool format, we used hicstuff pipeline: 
 ```bash
-hicstuff pipeline -t 18 -i -D -a bowtie2 --matfmt bg2 --no-cleanup -F -p -o out_Micro-C_WT_log_classic_genome  -g SC288_with_micron SRR7939017.1_1.fastq SRR7939017.1_2.fastq
+f1="LCH13_nxq_R1.fq.gz"
+f2="LCH13_nxq_R2.fq.gz"
+
+i="LCH13"
+title2=$i
+
+hicstuff pipeline -t 8 --mapping="iterative" --read-len=50 -f -D -a bowtie2 -e DpnII,HinfI --matfmt bg2 --no-cleanup -F -o out_$i -g /media/axel/RSG5/diverse_yeast_data_copy/cohesion_paper/genomes/W303_2micron $f1 $f2
 ```
 and convert into cool file:
 ```bash
