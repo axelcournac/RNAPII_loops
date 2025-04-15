@@ -66,3 +66,12 @@ chromosight quantify --pattern=loops  --perc-undetected=100 --perc-zero=100   $p
 python3 agglo_distrib.py $name_exp"_"$name_pair.json $name_exp"_"$name_pair.tsv
 
 
+### Computation and visualisation of loop spectrum 
+
+To compute the spectrum of cohesin loops at differents sizes, we use the python code analysis_spectrum_cohesin.py after quantifiying the loop scores with Chromosight with the following command: 
+```bash
+chromosight quantify --pattern=loops_small --perc-zero=100 --perc-undetected=20  /home/axel/Bureau/YEAST/pairs_peaks_cohesins3.txt.bg2.all_sizes.2  /media/axel/RSG5/disk/copy_diverse_yeast/data_LChaptel/out_LCH10/tmp/valid_idx_pcrfree.pairs.2000.S288C.cool  LCH10
+```
+
+
+
